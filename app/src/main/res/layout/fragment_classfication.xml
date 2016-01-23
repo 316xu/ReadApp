@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <TableRow>
+         <TextView
+             android:onClick="showlist"
+             android:clickable="true"
+
+             android:id="@+id/toplist"
+            android:textSize="@dimen/text_large"
+            android:gravity="center"
+            android:layout_height="100dp"
+            android:text="@string/top"
+            android:layout_weight="1"
+            android:padding="3dip" />
+    </TableRow>
+    <TableRow
+        android:weightSum="3"
+        >
+
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            android:id="@+id/class1"
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication1"
+            android:layout_weight="1"
+            />
+
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            
+            android:id="@+id/class2"
+
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication2"
+            android:layout_weight="1"
+            />
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            android:id="@+id/class3"
+
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication3"
+            android:layout_weight="1"
+            />
+    </TableRow>
+    <TableRow
+        android:weightSum="3"
+        >
+
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            android:id="@+id/class4"
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication4"
+            android:layout_weight="1"
+            />
+
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            android:id="@+id/class5"
+
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication5"
+            android:layout_weight="1"
+            />
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            android:id="@+id/class6"
+
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication6"
+            android:layout_weight="1"
+            />
+    </TableRow>
+    <TableRow
+        android:weightSum="3"
+        >
+
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            android:id="@+id/class7"
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication7"
+            android:layout_weight="1"
+            />
+
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            android:id="@+id/class8"
+
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication8"
+            android:layout_weight="1"
+            />
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            android:id="@+id/class9"
+
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication9"
+            android:layout_weight="1"
+            />
+    </TableRow>
+    <TableRow
+        android:weightSum="3"
+        >
+
+         <TextView    android:onClick="showlist"   android:clickable="true" 
+            android:id="@+id/class10"
+            android:textSize="@dimen/text_mid"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="60dp"
+            android:text="@string/classfication10"
+            android:layout_weight="3"
+            />
+    </TableRow>
+
+</TableLayout>

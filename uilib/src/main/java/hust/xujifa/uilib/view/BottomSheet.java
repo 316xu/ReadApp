@@ -16,7 +16,7 @@ import hust.xujifa.uilib.R;
 /**
  * Created by xujifa on 2016/1/22.
  */
-public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdateListener{
+public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdateListener {
 
     private static final String TAG = BottomSheet.class.getSimpleName();
     private int mColor, mTextColor;
@@ -35,6 +35,7 @@ public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdat
     private float posX;
 
     private OnPosChangeListener listener;
+
     public BottomSheet(Context context) {
         super(context);
     }
@@ -73,19 +74,23 @@ public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdat
 
         mOutline = new Path();
     }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        left = getLeft();
-        right = getRight();
-        top = getTop();
-        bottom = getBottom();
-        center = (right - left) / 2f;
-        cleft = (right - 3 * left) / 4f;
-        cright = center + cleft;
-        middleY = (bottom - top) / 2f;
-        outlineY = (bottom - top) / 4f;
-        posX = cleft;
+        if(mCreate&&getRight()!=0) {
+            left = getLeft();
+            right = getRight();
+            top = getTop();
+            bottom = getBottom();
+            center = (right - left) / 2f;
+            cleft = (right - 3 * left) / 4f;
+            cright = center + cleft;
+            middleY = (bottom - top) / 2f;
+            outlineY = (bottom - top) / 4f;
+            posX = cleft;
+            mCreate=false;
+        }
     }
 
     @Override
@@ -102,7 +107,7 @@ public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdat
         canvas.drawText(text1, cleft, middleY, mTextPaint);
         canvas.drawText(text2, center, middleY, mTextPaint);
         canvas.drawText(text3, cright, middleY, mTextPaint);
-        mCreate = false;
+
     }
 
     float startX, startPos;
@@ -112,55 +117,76 @@ public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdat
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 startPos = posX;
-                startX=event.getX();
+                startX = event.getX();
                 return true;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
-
-                endMove(posX);
+                float x = event.getX();
+                if (Math.abs(x - startX) < 10 * scale) {
+                    endMove(x);
+                } else {
+                    endMove(posX);
+                }
                 return false;
             case MotionEvent.ACTION_MOVE:
                 posX = startPos - (event.getX() - startX) / 3.5f;
-                posX=posX<cleft?cleft-20:(posX>cright+20?cright+20:posX);
+                posX = posX < cleft ? cleft - 20 : (posX > cright + 20 ? cright + 20 : posX);
 
                 invalidate();
+
                 return true;
             default:
                 return false;
         }
     }
 
-    private float animX,scaleX;
-    private void endMove(float nowX){
+    private float animX, scaleX;
 
-        pos=nowX<(cleft+center)/2?1:(nowX<(center+cright)/2?2:3);
+    private void endMove(float nowX) {
 
-        if(listener!=null){
+        pos = nowX < (cleft + center) / 2 ? 1 : (nowX < (center + cright) / 2 ? 2 : 3);
+
+        if (listener != null) {
             listener.posChange(pos);
         }
-        animX=pos==1?cleft:(pos==2?center:cright);
+        animX = pos == 1 ? cleft : (pos == 2 ? center : cright);
 
-        scaleX=(animX-posX)/20;
-        bV=0;
-        ValueAnimator animator=ValueAnimator.ofInt(0,20);
+        scaleX = (animX - posX) / 20;
+        bV = 0;
+        ValueAnimator animator = ValueAnimator.ofInt(0, 20);
 
-        animator.setDuration(1000);
+        animator.setDuration(500);
         animator.addUpdateListener(this);
         animator.start();
     }
-    int bV=0;
+
+    int bV = 0;
+
     @Override
     public void onAnimationUpdate(ValueAnimator animation) {
-        int value= (int) animation.getAnimatedValue();
-        posX+=scaleX*(value-bV);
-        bV=value;
+        int value = (int) animation.getAnimatedValue();
+        Log.d(TAG, value + "");
+
+        posX += scaleX * (value - bV);
+        bV = value;
         invalidate();
     }
+    public void setPos(int animpos){
+        animX = animpos == 1 ? cleft : (animpos == 2 ? center : cright);
 
-    public interface OnPosChangeListener{
+        scaleX = (animX - posX) / 20;
+        bV = 0;
+        ValueAnimator animator = ValueAnimator.ofInt(0, 20);
+
+        animator.setDuration(500);
+        animator.addUpdateListener(this);
+        animator.start();
+    }
+    public interface OnPosChangeListener {
         void posChange(int pos);
     }
-    public void setOnPosChangeListener(OnPosChangeListener listener){
-        this.listener=listener;
+
+    public void setOnPosChangeListener(OnPosChangeListener listener) {
+        this.listener = listener;
     }
 }
