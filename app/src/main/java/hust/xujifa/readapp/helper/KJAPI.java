@@ -13,7 +13,7 @@ public interface KJAPI {
             @Path("bookcode") int bookcode
     );
 
-    @GET("/member/{author}/home")
+    @GET("/member/{author}/bookman")
     Observable<String> getAuthorinfo(
             @Path("author") String author
     );

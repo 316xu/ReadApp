@@ -67,7 +67,7 @@ public class MainTest {
 
 
 
-        Thread.sleep(2000);
+        Thread.sleep(5000);
 
         Espresso.onView(ViewMatchers.withId(R.id.author)).perform(ViewActions.click());
 
