@@ -1,5 +1,6 @@
 package hust.xujifa.readapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.View;
 import hust.xujifa.readapp.R;
 import hust.xujifa.readapp.action.MainAction;
 import hust.xujifa.readapp.adapter.MainViewPagerAdatper;
+import hust.xujifa.readapp.helper.ConstantValue;
 import hust.xujifa.readapp.presenter.MainPresenter;
 import hust.xujifa.readapp.presenter.MainPresenterImp;
 import hust.xujifa.uilib.view.BottomSheet;
@@ -56,7 +58,16 @@ public class MainActivity extends BaseActivity implements MainAction {
     }
 
     public void showlist(View v){
+        Intent intent=new Intent(MainActivity.this,BooklistActivity.class);
+        switch (v.getId()){
+            case R.id.class1:
+                intent.putExtra("type", ConstantValue.BookType.TOP);
+                break;
+            default:
+                intent.putExtra("type", ConstantValue.BookType.TOP);
 
+        }
+        startActivity(intent);
     }
 
 

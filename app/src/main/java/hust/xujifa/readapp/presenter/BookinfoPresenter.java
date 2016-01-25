@@ -1,0 +1,8 @@
+package hust.xujifa.readapp.presenter;
+
+/**
+ * Created by xujifa on 2016/1/24.
+ */
+public interface BookinfoPresenter {
+    void getbookinfo(int bookcode);
+}
