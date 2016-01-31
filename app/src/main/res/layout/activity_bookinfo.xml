@@ -13,6 +13,7 @@
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/read"
+        android:onClick="startRead"
         android:text="read"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

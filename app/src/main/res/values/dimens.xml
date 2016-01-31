@@ -9,4 +9,7 @@
     <dimen name="text_large">36sp</dimen>
     <dimen name="text_mid">24sp</dimen>
     <dimen name="text_small">16sp</dimen>
+
+    <dimen name="fab_padding">16dp</dimen>
+    <dimen name="fab_search_bottom">-30dp</dimen>
 </resources>

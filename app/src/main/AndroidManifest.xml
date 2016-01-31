@@ -22,6 +22,9 @@
         <activity android:name=".activity.BooklistActivity"/>
         <activity android:name=".activity.BookinfoActivity"/>
         <activity android:name=".activity.AuthorinfoActivity"/>
+        <activity android:name=".activity.ReadActivity"/>
+        <activity android:name=".activity.SearchActivity"/>
+
     </application>
 
 </manifest>

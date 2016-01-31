@@ -3,6 +3,7 @@ package hust.xujifa.uilib.view;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -33,8 +34,11 @@ public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdat
 
     private int pos = 1;
     private float posX;
-
+    private boolean firstDraw=true;
     private OnPosChangeListener listener;
+
+    private Bitmap cacheBitmap;
+
 
     public BottomSheet(Context context) {
         super(context);
@@ -66,7 +70,7 @@ public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdat
         mTextPaint = new Paint();
         mOutlinePaint = new Paint();
 
-        mTextPaint.setColor(mTextColor);
+        mTextPaint.setColor(Color.BLACK);
         mTextPaint.setTextSize(this.scale * 16);
         mTextPaint.setTextAlign(Paint.Align.CENTER);
         mOutlinePaint.setColor(mColor);
@@ -96,17 +100,58 @@ public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdat
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        mOutline.reset();
+
+
+
+        if(firstDraw&& right!=0){
+            cacheBitmap=Bitmap.createBitmap(right, bottom, Bitmap.Config.ARGB_8888);
+            Canvas cacheC=new Canvas(cacheBitmap);
+
+            mOutline.reset();
+            mOutline.moveTo(0, outlineY);
+            mOutline.lineTo(right, outlineY);
+            mOutline.lineTo(right, bottom);
+            mOutline.lineTo(0, bottom);
+            mOutline.lineTo(0, outlineY);
+
+            cacheC.drawPath(mOutline, mOutlinePaint);
+
+            cacheC.drawText(text1, cleft, middleY, mTextPaint);
+            cacheC.drawText(text2, center, middleY, mTextPaint);
+            cacheC.drawText(text3, cright, middleY, mTextPaint);
+
+            canvas.drawBitmap(cacheBitmap,0,0,mOutlinePaint);
+            firstDraw=false;
+        }
+
+        if(right!=0){
+            canvas.drawBitmap(cacheBitmap,0,0,mTextPaint);
+            mOutline.reset();
+            mOutline.moveTo(0, 0);
+            mOutline.lineTo(posX, outlineY);
+            mOutline.lineTo(right, 0);
+            mOutline.lineTo(right, outlineY);
+            mOutline.lineTo(0, outlineY);
+            mOutline.lineTo(0, 0);
+            canvas.drawPath(mOutline, mOutlinePaint);
+
+
+        }
+
+
+       /* mOutline.reset();
         mOutline.moveTo(0, 0);
         mOutline.lineTo(posX, outlineY);
         mOutline.lineTo(right, 0);
         mOutline.lineTo(right, bottom - top);
-        mOutline.lineTo(0, bottom - top);
+        mOutline.lineTo(0, bottom-top);
         mOutline.lineTo(0, 0);
         canvas.drawPath(mOutline, mOutlinePaint);
+
         canvas.drawText(text1, cleft, middleY, mTextPaint);
         canvas.drawText(text2, center, middleY, mTextPaint);
-        canvas.drawText(text3, cright, middleY, mTextPaint);
+        canvas.drawText(text3, cright, middleY, mTextPaint);*/
+
 
     }
 
@@ -165,7 +210,7 @@ public class BottomSheet extends BaseView implements ValueAnimator.AnimatorUpdat
     @Override
     public void onAnimationUpdate(ValueAnimator animation) {
         int value = (int) animation.getAnimatedValue();
-        Log.d(TAG, value + "");
+
 
         posX += scaleX * (value - bV);
         bV = value;

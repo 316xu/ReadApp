@@ -26,17 +26,26 @@ public class BookinfoActivity extends BaseActivity implements BookinfoAction {
     }
 
 
-    public void aboutAuthor(View v){
-        Intent authorIntent=new Intent(BookinfoActivity.this,AuthorinfoActivity.class);
 
-        authorIntent.putExtra("authorUrl",authorUrl);
-
-        startActivity(authorIntent);
-    }
 
     @Override
     public void setAuthorUrl(String authorUrl) {
         Log.d(TAG, authorUrl);
         this.authorUrl=authorUrl;
     }
+
+
+    public void aboutAuthor(View v){
+        Intent authorIntent=new Intent(BookinfoActivity.this,AuthorinfoActivity.class);
+
+        authorIntent.putExtra("authorUrl", authorUrl);
+
+        startActivity(authorIntent);
+    }
+    public void startRead(View v){
+        Intent readIntent=new Intent(BookinfoActivity.this,ReadActivity.class);
+        readIntent.putExtra("bookcode",bookcode);
+        startActivity(readIntent);
+    }
+
 }

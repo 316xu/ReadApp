@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<SwitchPreference
+    android:id="@+id/showbitmap"
+    android:showText="true"
+    android:textOn="@string/bitmapon"
+    android:textOff="@string/bitmapoff"
+    />
+    <Preference
+        android:title="@string/clear"
+        />
+    <Preference
+        android:title="@string/checkup"
+        />
+</PreferenceScreen>
