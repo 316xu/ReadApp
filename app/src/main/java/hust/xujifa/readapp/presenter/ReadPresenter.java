@@ -1,5 +1,6 @@
 package hust.xujifa.readapp.presenter;
 
 public interface ReadPresenter {
-    void getCatolog(int bookCode);
+    void getCatalog(int bookCode);
+    void getContent();
 }

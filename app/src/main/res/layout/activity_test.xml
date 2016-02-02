@@ -6,23 +6,8 @@
     android:layout_height="match_parent"
     >
 
-    <hust.xujifa.uilib.view.BottomSheet
-        android:id="@+id/bottom_sheet"
+    <hust.xujifa.uilib.viewgroup.ReadPage
         android:layout_width="match_parent"
-        android:layout_height="@dimen/bottomsheet_height"
-        app:background_color="@color/colorPrimary"
-        app:text_color="@android:color/white"
-
-        app:text1="@string/bottomsheet_text1"
-        app:text2="@string/bottomsheet_text2"
-        app:text3="@string/bottomsheet_text3"
-        android:layout_alignParentBottom="true"
-        />
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_sheet"
-        />
+        android:layout_height="match_parent"></hust.xujifa.uilib.viewgroup.ReadPage>
 
 </RelativeLayout>

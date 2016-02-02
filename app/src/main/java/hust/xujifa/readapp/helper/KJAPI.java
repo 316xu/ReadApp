@@ -27,4 +27,9 @@ public interface KJAPI {
     Observable<String>search(
         @Query("keyword")String keyword
     );
+    @GET("/read/book/{bookcode}/{chapter}")
+    Observable<String>getContent(
+            @Path("bookcode")int bookcode,
+            @Path("chapter") int chapter
+    );
 }

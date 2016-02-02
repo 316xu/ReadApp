@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.ReadActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -22,7 +22,6 @@
         <activity android:name=".activity.BooklistActivity"/>
         <activity android:name=".activity.BookinfoActivity"/>
         <activity android:name=".activity.AuthorinfoActivity"/>
-        <activity android:name=".activity.ReadActivity"/>
         <activity android:name=".activity.SearchActivity"/>
 
     </application>

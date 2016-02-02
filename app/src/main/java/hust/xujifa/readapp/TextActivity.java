@@ -11,7 +11,7 @@ public class TextActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_activity);
-        Log.d("AAA", "test");
+        setContentView(R.layout.activity_test);
+
     }
 }
